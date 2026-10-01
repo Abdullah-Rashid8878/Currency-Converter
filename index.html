@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter Pro</title>
+    <link rel="stylesheet" href="mini.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dark">
+
+  
+    <canvas id="rainfall"></canvas>
+
+    
+    <div id="lightning"></div>
+
+
+    <div class="topbar">
+        <div class="lang-btns">
+            <button onclick="setLang('en')" id="btn-en" class="lang-btn active">EN</button>
+            <button onclick="setLang('ur')" id="btn-ur" class="lang-btn">UR</button>
+    
+        </div>
+        <div class="right-controls">
+            <label class="rain-label" data-i18n="rainIntensity">Rain</label>
+            <input type="range" id="rainSlider" min="50" max="400" value="200" />
+            <button onclick="toggleTheme()" id="themeBtn" class="icon-btn">🌙</button>
+            <button onclick="toggleSound()" id="soundBtn" class="icon-btn">🔇</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 data-i18n="title">💱 Currency Converter</h1>
+
+        
+        <div class="card">
+            <div class="input-group">
+                <label data-i18n="amount">Amount</label>
+                <input type="number" id="amount" placeholder="Enter amount" value="1" />
+            </div>
+
+            <div class="row">
+                <div class="input-group">
+                    <label data-i18n="from">From</label>
+                    <select id="fromCurrency"></select>
+                </div>
+                <button class="swap-btn" id="swapBtn">⇄</button>
+                <div class="input-group">
+                    <label data-i18n="to">To</label>
+                    <select id="toCurrency"></select>
+                </div>
+            </div>
+
+          
+            <div class="alert-row">
+                <label data-i18n="alertLabel">🔔 Alert when rate reaches:</label>
+                <input type="number" id="alertRate" placeholder="e.g. 285" />
+                <button onclick="setAlert()" class="small-btn" data-i18n="setAlert">Set</button>
+            </div>
+
+            <button class="convert-btn" id="convertBtn" data-i18n="convert">Convert</button>
+
+            <div class="result" id="result">
+                <span id="resultText" data-i18n="resultPlaceholder">Result will appear here</span>
+            </div>
+        </div>
+
+     
+        <div class="card mt">
+            <h2 data-i18n="chartTitle">📊 7-Day Rate Chart</h2>
+            <canvas id="rateChart"></canvas>
+        </div>
+
+        
+        <div class="card mt">
+            <div class="card-header">
+                <h2 data-i18n="history">🕐 Conversion History</h2>
+                <button onclick="clearHistory()" class="small-btn danger" data-i18n="clear">Clear</button>
+            </div>
+            <ul id="historyList"><li class="empty" data-i18n="noHistory">No history yet</li></ul>
+        </div>
+
+       
+        <div class="card mt">
+            <h2 data-i18n="favourites">⭐ Favourite Pairs</h2>
+            <div id="favList" class="fav-list"></div>
+            <button onclick="addFavourite()" class="small-btn mt-sm" data-i18n="addFav">+ Add Current Pair</button>
+        </div>
+    </div>
+
+   
+    <audio id="thunderSound" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_8b55a9f6e0.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="mini-project.js"></script>
+</body>
+</html>
